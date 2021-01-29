@@ -19,8 +19,8 @@ public class DemoApplication {
 	}
 
 	@GetMapping("/api")
-	public int position(@RequestParam(defaultValue = "25") Integer name){
-		return name ;
+	public int position(@RequestParam(defaultValue = "25") Integer position){
+		return position ;
 	}
 
 
