@@ -18,4 +18,15 @@ public class DemoApplication {
 		return String.format("Hello %s", name);
 	}
 
+	@GetMapping("/api")
+	public int position(@RequestParam(defaultValue = "25") Integer name){
+		return name ;
+	}
+
+
+	@GetMapping("/testing_app")
+	public String testingApp(@RequestParam(value = "credential", defaultValue = "0000000000") String credential){
+		return credential;
+	}
+
 }
