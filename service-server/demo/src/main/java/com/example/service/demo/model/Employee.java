@@ -1,15 +1,12 @@
 package com.example.service.demo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Employee")
 public class Employee {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int employeeId;
 
     @Column(name = "credentials", length = 50)
@@ -39,7 +36,7 @@ public class Employee {
     @Column(name = "password", length = 200)
     private String password;
 
-    public Employee(){
+    /*public Employee(){
 
     }
 
@@ -55,7 +52,7 @@ public class Employee {
         this.setUsername(username);
         this.setPassword(password);
         this.setUserCredentialWorkd(userCredentialWorkd);
-    }
+    }*/
 
 
     public String getCredentials() {

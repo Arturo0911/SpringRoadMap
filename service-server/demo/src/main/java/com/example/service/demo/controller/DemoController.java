@@ -27,4 +27,17 @@ public class DemoController {
 		return "greeting";
 	}
 
+
+	@GetMapping("/home")
+	public String home(){
+		return "home";
+	}
+
+	@GetMapping("/tables")
+	public String tables(){return "tables";}
+
+
+	@GetMapping("/sales")
+	public String sales(){return "sales";}
+
 }
