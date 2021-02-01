@@ -36,24 +36,6 @@ public class Employee {
     @Column(name = "password", length = 200)
     private String password;
 
-    /*public Employee(){
-
-    }
-
-    public Employee(String credentials, String name, String lastNames,
-                        String phoneNumber, String emailAddress, String departmentName,
-                        String username, String password, String userCredentialWorkd) {
-        this.setCredentials(credentials);
-        this.setName(name);
-        this.setLastNames(lastNames);
-        this.setPhoneNumber(phoneNumber);
-        this.setEmailAddress(emailAddress);
-        this.setDepartmentName(departmentName);
-        this.setUsername(username);
-        this.setPassword(password);
-        this.setUserCredentialWorkd(userCredentialWorkd);
-    }*/
-
 
     public String getCredentials() {
         return credentials;
