@@ -1,10 +1,13 @@
 package com.example.service.demo.res;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +31,12 @@ public class RestProductController {
 	@PostMapping("/insertion")
 	public void insertProduct(@RequestBody Product product) {
 		iProduct.save(product);
+	}
+	
+	@PutMapping("/updating")
+	public void updateProduct(@RequestBody Product product) {
+		 iProduct.save(product);
+		
 	}
 	
 	
