@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "Employee")
 public class Employee {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int employeeId;
 
     @Column(name = "credentials", length = 50)
@@ -27,8 +27,6 @@ public class Employee {
     @Column(name = "departmentName", length = 50)
     private String departmentName;
 
-    @Column(name = "userCredentials", length = 50)
-    private String userCredentialWorkd;
 
     @Column(name = "username", length = 50)
     private String username;
@@ -36,11 +34,6 @@ public class Employee {
     @Column(name = "password", length = 200)
     private String password;
     
-    
-    /*
-     * 
-     * Getters and Setters
-     * */
 
     public String getCredentials() {
         return credentials;
@@ -105,12 +98,5 @@ public class Employee {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public String getUserCredentialWorkd() {
-        return userCredentialWorkd;
-    }
-
-    public void setUserCredentialWorkd(String userCredentialWorkd) {
-        this.userCredentialWorkd = userCredentialWorkd;
-    }
+    
 }
