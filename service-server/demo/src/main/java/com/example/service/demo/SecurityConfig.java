@@ -1,10 +1,11 @@
-package com.example.service.demo;
+	package com.example.service.demo;
 
 import com.example.service.demo.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -44,10 +45,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
          * Whevereer request incoming would have to authenticated 
          * 
         */
-        http
+        http.csrf().disable()
             .authorizeRequests()
-            .anyRequest()
-            .authenticated()
+            .antMatchers(HttpMethod.GET, "/product/list_product").permitAll()
+            .antMatchers(HttpMethod.POST, "/product").permitAll()
+            .anyRequest().authenticated()
             .and()
             .httpBasic();
     }

@@ -25,7 +25,7 @@ public class RestProductController {
 		return iProduct.findAll();
 	}
 	
-	@PostMapping
+	@PostMapping("/insertion")
 	public void insertProduct(@RequestBody Product product) {
 		iProduct.save(product);
 	}
