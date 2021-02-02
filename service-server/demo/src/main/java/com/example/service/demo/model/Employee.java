@@ -35,7 +35,12 @@ public class Employee {
 
     @Column(name = "password", length = 200)
     private String password;
-
+    
+    
+    /*
+     * 
+     * Getters and Setters
+     * */
 
     public String getCredentials() {
         return credentials;
