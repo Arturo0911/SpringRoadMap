@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">SpringClient</string>
+    <string name="liquor">Licoreria carmita</string>
+    <string name="client_credentials">client credentials</string>
+    <string name="client_age">Client age</string>
+    <string name="product_sanitary_register">product sanitary register</string>
+    <string name="product_year">product year</string>
+    <string name="product_price">product price</string>
+    <string name="product_category">product category</string>
+    <string name="product_name">Product name</string>
+    <string name="product_made">Product made</string>
+    <string name="product_type">Product type</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="save">Save</string>
+    <string name="view_list">view List</string>
+
+
+    <string-array name="ProductTypes">
+        <item>Beer</item>
+        <item>Whiskey</item>
+        <item>Ron</item>
+        <item>Vodka</item>
+    </string-array>
+
+    <string-array name="ProductMades">
+        <item>National</item>
+        <item>International</item>
+    </string-array>
+
+    <string-array name="ProductCategories">
+        <item>Big</item>
+        <item>Small</item>
+        <item>Medium</item>
+    </string-array>
+
 </resources>

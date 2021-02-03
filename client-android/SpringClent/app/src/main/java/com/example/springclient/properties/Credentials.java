@@ -3,8 +3,17 @@ package com.example.springclient.properties;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
+/**
+ * @author Arturo Negreiros Samanez
+ * */
 public class Credentials {
 
+
+    /**
+     * @param credential first do make the String credential into ArrayList string type
+     *                   after that use the cedula algorithm
+     * */
     public boolean verifyCredential(String credential){
 
         try{
@@ -41,9 +50,6 @@ public class Credentials {
             }else {
                 return false;
             }
-
-
-
 
         }catch (Exception e){
             e.printStackTrace();
