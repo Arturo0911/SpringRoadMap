@@ -2,6 +2,7 @@
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -28,7 +29,7 @@ import java.util.Arrays;
      private RadioButton sanitaryRegisterYes;
      private RadioButton sanitaryRegisterNo;
      private EditText clientAge;
-     
+
 
 
     public void initButton(View view){
@@ -44,10 +45,13 @@ import java.util.Arrays;
 
     public void onViewList(View view){
 
-        if (ProductList.liquorList.size() < 1){
+        if (ProductList.liquorList.size() == 0){
             Toast.makeText(this, "The product list it's empty", Toast.LENGTH_SHORT).show();
         }else{
+
             Toast.makeText(this, "Got it", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, ListProductsItems.class);
+            startActivity(intent);
         }
     }
 
