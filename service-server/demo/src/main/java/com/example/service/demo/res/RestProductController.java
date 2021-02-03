@@ -1,9 +1,11 @@
 package com.example.service.demo.res;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,8 +37,20 @@ public class RestProductController {
 	
 	@PutMapping("/updating")
 	public void updateProduct(@RequestBody Product product) {
-		 iProduct.save(product);
 		
+		Product productUpdate = new Product();
+		productUpdate.setIdProduct(product.getIdProduct());
+		productUpdate.setProductName(product.getProductName());
+		productUpdate.setProductStock(product.getProductStock());
+		productUpdate.setProductPrice(product.getProductPrice());
+		
+		iProduct.save(productUpdate);
+
+	}
+	
+	@DeleteMapping("/popproduct/{productId}")
+	public void deleteProduct(@PathVariable Integer productId) {
+		iProduct.deleteById(productId);
 	}
 	
 	

@@ -10,6 +10,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idProduct;
 	
+	
 	@Column(name= "product_name", length = 50)
 	private String productName;
 	
@@ -19,6 +20,15 @@ public class Product {
 	@Column(name = "product_price")
 	private float productPrice;
 	
+	
+	
+	public int getIdProduct() {
+		return idProduct;
+	}
+
+	public void setIdProduct(int idProduct) {
+		this.idProduct = idProduct;
+	}
 
 	public String getProductName() {
 		return productName;

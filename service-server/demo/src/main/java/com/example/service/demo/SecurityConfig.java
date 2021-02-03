@@ -41,15 +41,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        /**
-         * Whevereer request incoming would have to authenticated 
-         * 
-        */
         http.csrf().disable()
             .authorizeRequests()
             .antMatchers(HttpMethod.GET, "/product/list_product").permitAll()
             .antMatchers(HttpMethod.POST, "/product/insertion").permitAll()
             .antMatchers(HttpMethod.PUT, "/product/updating").permitAll()
+            .antMatchers(HttpMethod.DELETE, "/product/popproduct/{productId}").permitAll()
             .anyRequest().authenticated()
             .and()
             .httpBasic();
