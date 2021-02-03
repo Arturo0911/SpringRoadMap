@@ -28,6 +28,7 @@ import java.util.Arrays;
      private RadioButton sanitaryRegisterYes;
      private RadioButton sanitaryRegisterNo;
      private EditText clientAge;
+     
 
 
     public void initButton(View view){
