@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ProductList {
 
 
-    public static ArrayList<Liquor> liquorList = new ArrayList<>();
+    public static ArrayList<Liquor> liquorList = new ArrayList<Liquor>();
 
 
 }

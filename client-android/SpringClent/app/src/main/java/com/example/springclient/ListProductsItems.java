@@ -5,35 +5,41 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.example.springclient.properties.Liquor;
+import com.example.springclient.properties.ProductList;
+
+import java.util.ArrayList;
+
 public class ListProductsItems extends Activity {
 
-    /**
-     * Same as {@link #onCreate(Bundle)} but called for those activities created with
-     * the attribute {@link android.R.attr#persistableMode} set to
-     * <code>persistAcrossReboots</code>.
-     *
-     * @param savedInstanceState if the activity is being re-initialized after
-     *                           previously being shut down then this Bundle contains the data it most
-     *                           recently supplied in {@link #onSaveInstanceState}.
-     *                           <b><i>Note: Otherwise it is null.</i></b>
-     * @param persistentState    if the activity is being re-initialized after
-     *                           previously being shut down or powered off then this Bundle contains the data it most
-     *                           recently supplied to outPersistentState in {@link #onSaveInstanceState}.
-     *                           <b><i>Note: Otherwise it is null.</i></b>
-     * @see #onCreate(Bundle)
-     * @see #onStart
-     * @see #onSaveInstanceState
-     * @see #onRestoreInstanceState
-     * @see #onPostCreate
-     */
+    private ListView listItemsProduct;
+    private ListProductCustomized listProductCustomized;
+    Intent intentCustomized;
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate( Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.list_product_items);
+        listItemsProduct = (ListView) findViewById(R.id.listItemsProduct);
+        //ArrayList<Liquor> liquorsListed = ProductList.liquorList;
+        //liquorsListed = ProductList.liquorList;
+
+        try{
+            listProductCustomized = new ListProductCustomized(this, ProductList.liquorList);
+            listItemsProduct.setAdapter(listProductCustomized);
+        }catch (Exception e ){
+            e.printStackTrace();
+            Toast.makeText(this, "Someting happend", Toast.LENGTH_SHORT).show();
+        }
+
     }
+
 
     public void returnMain(View view){
         Intent intent = new Intent(ListProductsItems.this, MainActivity.class);

@@ -22,5 +22,7 @@
         android:onClick="returnMain"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="20sp"></Button>
+        android:textSize="20sp">
+
+    </Button>
 </LinearLayout>

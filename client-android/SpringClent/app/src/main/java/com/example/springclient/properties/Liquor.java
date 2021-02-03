@@ -6,15 +6,15 @@ public class Liquor {
     private String productType;
     private String productMade;
     private String productCategory;
-    private float productPrice;
+    private int productPrice;
     private String productYear;
-    private boolean productSanitaryRegister;
+    private String productSanitaryRegister;
     private String credentialsClient;
     private int ageClient;
 
     public Liquor(String productName, String productType, String productMade,
-                  String productCategory, float productPrice, String productYear,
-                  boolean productSanitaryRegister, String credentialsClient, int ageClient) {
+                  String productCategory, int productPrice, String productYear,
+                  String productSanitaryRegister, String credentialsClient, int ageClient) {
         this.productName = productName;
         this.productType = productType;
         this.productMade = productMade;
@@ -26,7 +26,6 @@ public class Liquor {
         this.ageClient = ageClient;
     }
 
-    public Liquor(){}
 
 
 
@@ -67,7 +66,7 @@ public class Liquor {
         return productPrice;
     }
 
-    public void setProductPrice(float productPrice) {
+    public void setProductPrice(int productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -79,11 +78,11 @@ public class Liquor {
         this.productYear = productYear;
     }
 
-    public boolean getProductSanitaryRegister() {
+    public String getProductSanitaryRegister() {
         return productSanitaryRegister;
     }
 
-    public void setProductSanitaryRegister(boolean productSanitaryRegister) {
+    public void setProductSanitaryRegister(String productSanitaryRegister) {
         this.productSanitaryRegister = productSanitaryRegister;
     }
 
