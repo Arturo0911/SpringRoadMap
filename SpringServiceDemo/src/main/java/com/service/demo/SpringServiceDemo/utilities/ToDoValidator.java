@@ -20,12 +20,7 @@ public class ToDoValidator implements Validator {
     public void validate(Object obj, Errors errors) {
 
         ToDo toDo = (ToDo) obj;
-        String description = toDo.getDescription();
         String priority = toDo.getPriority();
-
-        if (description == null && description.equals("")){
-            errors.rejectValue("description", "The filed 'description' cannot be null or empty");
-        }
 
         if (!"high".equalsIgnoreCase(priority) && !"low".equalsIgnoreCase(priority)){
             errors.rejectValue("priority", "priority must be 'high' or 'low'");
