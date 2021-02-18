@@ -8,13 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @org.springframework.web.bind.annotation.RestController
@@ -26,6 +24,12 @@ public class UserController {
     public UserController(UserDao userDao){
         this.userDao = userDao;
     }
+
+    @GetMapping("/users")
+    public List<User> getUsers(){
+        return (List<User>) userDao.findAll();
+    }
+
 
     @PostMapping("/user")
     ResponseEntity<String> addUser(@Valid @RequestBody User user){

@@ -21,18 +21,9 @@ public class User {
 
     public User(){}
 
-    public User(long id,String name,String email) {
-        this.id = id;
+    public User(String name,String email) {
         this.name = name;
         this.email = email;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
