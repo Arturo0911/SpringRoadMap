@@ -53,7 +53,7 @@ public class SpringServiceDemoApplication implements CommandLineRunner {
 
 		toDoDao.save(new ToDo(1,"Learning Spring", new Date(), "HIGH", "anegreiross@outlook.com"));
 		toDoDao.save(new ToDo(2,"Learning Java", new Date(), "LOW", "negreirosarturo@gmail.com"));
-		toDoDao.save(new ToDo(3, "Using this Os to security", new Date(), "ASAP", "payload_1609@protonmail.com"));
+		toDoDao.save(new ToDo(3, "Using this Os to security", new Date(), "HIGH", "payload_1609@protonmail.com"));
 
 		log.info("Data was saved into database");
 
