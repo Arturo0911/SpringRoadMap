@@ -5,6 +5,7 @@ import com.service.demo.SpringServiceDemo.entities.Employee;
 import com.service.demo.SpringServiceDemo.entities.ToDo;
 import com.service.demo.SpringServiceDemo.entities.User;
 import com.service.demo.SpringServiceDemo.utilities.ToDoValidator;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -95,6 +96,12 @@ public class RestController {
         }
         return "Todo description: "+toDo.getDescription()+", todo priority "+toDo.getPriority();
     }
+
+
+    // Response object
+
+    @RequestMapping("/response")
+    public ResponseEntity<>
 
 
 
