@@ -24,18 +24,6 @@ public class EmployeeController {
 
     @RequestMapping("/get_employee")
     public String setEmployee(@Valid Employee employee){
-        /*
-        *
-        * this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.departmentName = departmentName;
-        this.phoneNumber = phoneNumber;
-        this.username = username;
-        this.password = password;
-        *
-        * */
-
         return "The employee name: "+employee.getName();
     }
 
