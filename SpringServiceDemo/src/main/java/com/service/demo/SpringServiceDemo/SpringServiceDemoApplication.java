@@ -11,12 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import java.util.Date;
 
 @Log
 @SpringBootApplication
-public class SpringServiceDemoApplication implements CommandLineRunner {
+public class SpringServiceDemoApplication {
 
 	//private static final Logger log = LoggerFactory.getLogger(SpringServiceDemoApplication.class);
 
@@ -35,7 +36,16 @@ public class SpringServiceDemoApplication implements CommandLineRunner {
 
 	}
 
-	@Override
+	@Bean
+	public CommandLineRunner run(ToDoDao toDoDao) throws Exception {
+		return (String [] args)->{
+			ToDo toDo = new ToDo("arturo", "high", "anegreiross@outlook.com");
+			toDoDao.save(toDo);
+			toDoDao.findAll().forEach(System.out::println);
+		};
+	}
+
+	/*@Override
 	public void run(String... args) throws Exception {
 		//
 		log.info("hello");
@@ -59,5 +69,5 @@ public class SpringServiceDemoApplication implements CommandLineRunner {
 
 
 
-	}
+	}*/
 }
