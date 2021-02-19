@@ -6,6 +6,7 @@ import com.example.demo.demo.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -37,7 +38,12 @@ public class UserController {
     }
 
     @RequestMapping("/users2")
-    public String checkUser(@Valid User user){
+    public String checkUser(@Valid User user, BindingResult result){
+
+        if (result.hasErrors()){
+            return "these are the errors: "+result.getAllErrors().toString();
+        }
+
         return "the user is: "+user.getName()+" and this is your email: "+user.getEmail();
     }
 
