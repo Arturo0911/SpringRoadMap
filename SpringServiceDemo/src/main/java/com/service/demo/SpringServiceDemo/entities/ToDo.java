@@ -22,22 +22,22 @@ public class ToDo {
 
     @Column(name = "DESCRIPTION")
     @Getter @Setter
-    @NotNull @NotEmpty @NotBlank
+    @NotBlank(message = "the field 'description' cannot be empty")
     private String description;
 
     @Column(name = "DATE")
     @Getter @Setter
-    @NotNull @NotEmpty @NotBlank
+    @NotBlank(message = "the field 'date' cannot be empty")
     private Date date;
 
     @Column(name = "PRIORITY")
     @Getter @Setter
-    @NotNull @NotEmpty @NotBlank
+    @NotBlank(message = "the field 'priority' cannot be empty")
     private String priority;
 
     @Column(name = "FK_USER")
     @Getter @Setter
-    @NotNull @NotEmpty @NotBlank
+    @NotBlank(message = "the field 'fkUser' cannot be empty")
     private String fkUser;
 
 
