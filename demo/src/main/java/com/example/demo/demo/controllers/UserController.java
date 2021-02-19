@@ -31,11 +31,17 @@ public class UserController {
     }
 
 
-    @PostMapping("/user")
+    @PostMapping("/users")
     ResponseEntity<String> addUser(@Valid @RequestBody User user){
-
         return ResponseEntity.ok("User is valid");
     }
+
+    @RequestMapping("/users2")
+    public String checkUser(@Valid User user){
+        return "the user is: "+user.getName()+" and this is your email: "+user.getEmail();
+    }
+
+
 
     /*
     * The method stores the name and post-validation error message of each invalid field in a Map.
@@ -44,8 +50,6 @@ public class UserController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationException(MethodArgumentNotValidException ex){
-
-
         // Created the hashmap with all the errors to be showed
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach((error) -> {

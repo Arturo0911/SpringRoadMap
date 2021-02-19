@@ -21,8 +21,10 @@ public class DemoApplication {
 		return (String[] args) ->{
 			User user1 = new User("Arturo", "anegreiros@outlook.com");
 			User user2 = new User("Francesco", "negreirosarturo@gmail.com");
+			User user3 = new User("Sara", "sara@gmail.com");
 			userDao.save(user1);
 			userDao.save(user2);
+			userDao.save(user3);
 			userDao.findAll().forEach(System.out::println);
 
 		};
