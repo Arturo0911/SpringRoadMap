@@ -7,6 +7,7 @@ import com.company.firstdemo.Microservice1.utilities.JwtUtils;
 import com.company.firstdemo.Microservice1.utilities.UserNotInDatabaseException;
 import com.company.firstdemo.Microservice1.utilities.UserNotLoggedException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -14,6 +15,8 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 
+
+@Service
 public class LoginServiceImpl implements LoginService {
 
 
@@ -46,7 +49,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public String createJWT(String email, String name, Date date) throws UnsupportedEncodingException {
-        date.setTime(date.getTime() + (300+1000));
+        date.setTime(date.getTime() + (300*1000));
         return jwtUtils.createJWT(email, name, date);
     }
 
