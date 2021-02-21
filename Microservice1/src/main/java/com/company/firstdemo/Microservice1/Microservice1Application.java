@@ -7,6 +7,7 @@ import com.company.firstdemo.Microservice1.entities.User;
 import com.company.firstdemo.Microservice1.utilities.EncryptionUtils;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,7 +15,7 @@ import java.util.Date;
 
 @Log
 @SpringBootApplication
-public class Microservice1Application {
+public class Microservice1Application implements CommandLineRunner {
 
 	@Autowired
 	ToDoDao toDoDao;
@@ -30,12 +31,12 @@ public class Microservice1Application {
 	}
 
 
-
-	/*public void run(String... args) throws Exception {
+	@Override
+	public void run(String... args) throws Exception {
 		//
 		log.info("hello");
 		String encryptedPassword;
-		encryptedPassword = encryptionUtils.encrypt("MyRealPassword");
+		encryptedPassword = encryptionUtils.encrypt("LikeAStone");
 		userDao.save(new User("anegreiros@outlook.com", "Arturo Negreiros", encryptedPassword));
 		encryptedPassword = encryptionUtils.encrypt("MyUbuntu");
 		userDao.save(new User("negreirosarturo@gmail.com", "Francesco Samanez", encryptedPassword));
@@ -45,6 +46,6 @@ public class Microservice1Application {
 		toDoDao.save(new ToDo(2,"Learning Java", new Date(), "LOW", "negreirosarturo@gmail.com"));
 		toDoDao.save(new ToDo(3, "Using this Os to security", new Date(), "HIGH", "payload_1609@protonmail.com"));
 		log.info("Data was saved into database");
-	}*/
+	}
 
 }
