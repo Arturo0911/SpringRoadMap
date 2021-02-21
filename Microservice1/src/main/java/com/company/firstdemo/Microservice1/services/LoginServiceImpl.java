@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class LoginServiceImpl implements LoginService {
 
 
     @Override
-    public Optional<User> getUserFromDb(String email, String password) throws UserNotInDatabaseException {
+    public Optional<User> getUserFromDb(@NotNull String email,@NotNull String password) throws UserNotInDatabaseException {
 
         Optional<User> userr = userDao.findUserByEmail(email);
         if (userr.isPresent()){
@@ -48,7 +49,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public String createJWT(String email, String name, Date date) throws UnsupportedEncodingException {
+    public String createJWT(@NotNull String email, @NotNull String name,@NotNull Date date) throws UnsupportedEncodingException {
         date.setTime(date.getTime() + (300*1000));
         return jwtUtils.createJWT(email, name, date);
     }

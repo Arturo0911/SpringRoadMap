@@ -1,6 +1,7 @@
 package com.company.firstdemo.Microservice1.utilities;
 
 import io.jsonwebtoken.*;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.*;
 import java.nio.charset.StandardCharsets;
@@ -8,6 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class JwtUtils {
 
     public String createJWT(String email, String name, Date date){
