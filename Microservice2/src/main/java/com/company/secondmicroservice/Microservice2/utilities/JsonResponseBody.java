@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
+@AllArgsConstructor @NoArgsConstructor
 public class JsonResponseBody {
 
     @Getter @Setter
@@ -14,6 +14,10 @@ public class JsonResponseBody {
 
     @Getter @Setter
     private Object response;
+
+    public Object getResponse(){
+        return response;
+    }
 
 
 }

@@ -12,23 +12,33 @@ import java.util.Map;
 @Component
 public class JwtUtils {
 
-    public String createJWT(String email, String name, Date date){
+    /* USEFUL LINKS:
+        https://stormpath.com/blog/jwt-java-create-verify
+        https://stormpath.com/blog/beginners-guide-jwts-in-java
+        https://github.com/jwtk/jjwt
+    */
 
-        return Jwts.builder()
+
+    public String generateJwt(String email, String name, Date date) throws java.io.UnsupportedEncodingException {
+
+        String jwt = Jwts.builder()
                 .setSubject(email)
                 .setExpiration(date)
-                .claim("name",name)
+                .claim("name", name)
                 .signWith(
                         SignatureAlgorithm.HS256,
-                        "MyPersonalSecretKey123456".getBytes(StandardCharsets.UTF_8)
+                        "myPersonalSecretKey12345".getBytes("UTF-8")
                 )
                 .compact();
+
+        return jwt;
     }
+
 
     public Map<String, Object> jwt2Map(String jwt) throws java.io.UnsupportedEncodingException, ExpiredJwtException {
 
         Jws<Claims> claim = Jwts.parser()
-                .setSigningKey("myPersonalSecretKey12345".getBytes(StandardCharsets.UTF_8))
+                .setSigningKey("myPersonalSecretKey12345".getBytes("UTF-8"))
                 .parseClaimsJws(jwt);
 
         String name = claim.getBody().get("name", String.class);
@@ -49,10 +59,11 @@ public class JwtUtils {
         return userData;
     }
 
+
     /**
      * this method extracts the jwt from the header or the cookie in the Http request
      *
-     * @param request the request of te endpoint
+     * @param request
      * @return jwt
      */
     public String getJwtFromHttpRequest(HttpServletRequest request) {
@@ -69,8 +80,5 @@ public class JwtUtils {
         }
         return jwt;
     }
-
-
-
 
 }

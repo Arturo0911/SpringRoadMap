@@ -10,11 +10,18 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 
+
+
+/**
+ * @author Arturo Payload
+ */
+
+
 public interface LoginService {
 
-    Optional<User> getUserFromDb(String email, String password) throws UserNotInDatabaseException;
-    String createJWT(String email, String name, Date date) throws UnsupportedEncodingException;
+    Optional<User> getUserFromDb(String email, String pwd) throws UserNotInDatabaseException;
 
-    Map<String, Object> verifyJWTAndGetData(HttpServletRequest request) throws UnsupportedEncodingException, UserNotLoggedException;
+    String createJwt(String email, String name, Date date) throws UnsupportedEncodingException;
 
+    Map<String, Object> verifyJwtAndGetData(HttpServletRequest request)throws UnsupportedEncodingException, UserNotLoggedException; //ExpiredJwtException;
 }

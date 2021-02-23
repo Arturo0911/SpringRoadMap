@@ -10,6 +10,11 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Date;
 
+/**
+ * @author Arturo Negreiros 2021
+ * */
+
+
 @Entity
 @Table(name = "Latest_statistics")
 @AllArgsConstructor @NoArgsConstructor

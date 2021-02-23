@@ -16,10 +16,8 @@ import java.util.Date;
 import java.util.Map;
 import java.util.Optional;
 
-
 @Service
-public class LoginServiceImpl implements LoginService {
-
+public class LoginServiceImpl implements LoginService{
 
     @Autowired
     UserDao userDao;
@@ -31,40 +29,37 @@ public class LoginServiceImpl implements LoginService {
     JwtUtils jwtUtils;
 
 
+
     @Override
-    public Optional<User> getUserFromDb(@NotNull String email,@NotNull String password) throws UserNotInDatabaseException {
+    public Optional<User> getUserFromDb(@NotNull String email, @NotNull String pwd) throws UserNotInDatabaseException{
 
         Optional<User> userr = userDao.findUserByEmail(email);
-        if (userr.isPresent()){
+        if(userr.isPresent()){
             User user = userr.get();
-            if (!encryptionUtils.decrypt(user.getPassword()).equals(password)){
-                throw new UserNotInDatabaseException("Wrong email or password");
+            if(! encryptionUtils.decrypt(user.getPassword()).equals(pwd)){
+                throw new UserNotInDatabaseException("Wrong email or password!");
             }
-
-        }else{
-            throw new UserNotInDatabaseException("Wrong email or password");
         }
-
         return userr;
     }
 
+
+
     @Override
-    public String createJWT(@NotNull String email, @NotNull String name,@NotNull Date date) throws UnsupportedEncodingException {
+    public String createJwt(@NotNull String email, @NotNull String name, @NotNull Date date) throws UnsupportedEncodingException{
         date.setTime(date.getTime() + (300*1000));
-        return jwtUtils.createJWT(email, name, date);
+        return jwtUtils.generateJwt(email, name, date);
     }
+
 
 
     @Override
-    public Map<String, Object> verifyJWTAndGetData(HttpServletRequest request) throws UnsupportedEncodingException, UserNotLoggedException {
-
+    public Map<String, Object> verifyJwtAndGetData(HttpServletRequest request)throws UnsupportedEncodingException, UserNotLoggedException{//, ExpiredJwtException{
         String jwt = jwtUtils.getJwtFromHttpRequest(request);
-
-        if (jwt == null){
-            throw new UserNotLoggedException("user not logged ");
+        if(jwt == null){
+            throw new UserNotLoggedException("User not logger! Login first.");
         }
-
         return jwtUtils.jwt2Map(jwt);
-
     }
+
 }

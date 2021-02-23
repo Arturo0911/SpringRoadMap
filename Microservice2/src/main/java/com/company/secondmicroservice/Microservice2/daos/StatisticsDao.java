@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface StatisticsDao extends JpaRepository<Statistics, Integer> {
 
-    @Query(value = "SELECT * FROM Latest_statistics WHERE email=:email ORDER BY date DESC LIMIT 10", nativeQuery = true)
+    @Query(value="SELECT * FROM Latest_statistics WHERE email=:email  ORDER BY DATE DESC LIMIT 10;", nativeQuery = true)
     public List<Statistics> getLastStatistics(@Param("email") String email);
 
 }
