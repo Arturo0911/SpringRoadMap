@@ -8,11 +8,11 @@
 		<version>2.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.company.rest.college</groupId>
-	<artifactId>CollegeMicroService</artifactId>
+	<groupId>com.company.socialnetwork</groupId>
+	<artifactId>SocialNetworkMicroservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>CollegeMicroService</name>
-	<description>Building a MicroService with REST API to test data</description>
+	<name>SocialNetworkMicroservice</name>
+	<description>Microservice of Social network</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
