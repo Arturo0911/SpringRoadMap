@@ -1,6 +1,7 @@
 package com.company.socialnetwork.SocialNetworkMicroservice.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,6 +44,7 @@ public class User {
 
     @Column(name = "user_birth")
     @Getter @Setter
+    @JsonFormat(pattern="dd/MM/yy")
     private Date userBirth; // can be nut or null
 
     @Column(name = "user_gender", length = 10)
@@ -67,7 +69,7 @@ public class User {
     *
     * */
 
-    @ManyToMany
+    /*@ManyToMany
     @JoinTable(name = "users_follow",
             joinColumns = @JoinColumn(name = "user_id_follower"), inverseJoinColumns = @JoinColumn(name = "user_id_followed"))
     @Getter @Setter
@@ -75,7 +77,7 @@ public class User {
 
     @OneToMany(mappedBy = "userFollower")
     @Getter @Setter
-    private Set<Following> followings = new HashSet<>();
+    private Set<Following> followings = new HashSet<>();*/
 
 
 

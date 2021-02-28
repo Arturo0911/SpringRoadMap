@@ -28,6 +28,9 @@ public class UserServiceImplementation implements UserService {
         Optional<User> users = iUser.findById(id);
         if(users.isPresent()){
             User user = users.get();
+            if(user.getUserId() == null){
+                throw new UserNotInDataBaseException("THe user is not present in database");
+            }
 
         }
         return users;
@@ -35,6 +38,6 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public User saveNewUser(User user) {
-        return null;
+        return iUser.save(user);
     }
 }
