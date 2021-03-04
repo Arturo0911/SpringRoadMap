@@ -63,6 +63,11 @@ public class User {
     private String password;
 
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_relations", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "following_id"))
+    @Getter @Setter
+    private List<User> followers;
+
 
     /*
     * How many users yo follow

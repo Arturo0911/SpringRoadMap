@@ -40,4 +40,21 @@ public class UserServiceImplementation implements UserService {
     public User saveNewUser(User user) {
         return iUser.save(user);
     }
+
+    @Override
+    public List<User> getFollowers(User user) {
+        return user.getFollowers();
+    }
+
+    @Override
+    public User follow(User userFollower, int userToFollowId) {
+        Optional<User> userToFollow = iUser.findById(userToFollowId);
+
+        if (!userFollower.getFollowers().contains(userToFollow.get())){
+            userFollower.getFollowers().add((User) userToFollow.get());
+        }
+
+
+        return userToFollow.get() ;
+    }
 }
