@@ -39,6 +39,11 @@ public class UserServiceImplementation implements UserService {
         return users;
     }
 
+    /**
+     *
+     * @param user object to be inserted into database
+     * @return the new user saved
+     */
     @Override
     public User saveNewUser(User user) {
         return iUser.save(user);
@@ -71,6 +76,7 @@ public class UserServiceImplementation implements UserService {
      * @param user primary key to fetch the from database
      * @return object whicn the user info and how many users are following
      */
+    @Override
     public Object sendInfoUser(int user){
         Optional<User> userFound = iUser.findById(user);
         HashMap<Object, Object> userInfo = new HashMap<>();
@@ -84,6 +90,7 @@ public class UserServiceImplementation implements UserService {
      * @param userFollower
      * @param userToDelete
      */
+    @Override
     public void unFollowUser(int userFollower, int userToDelete){
         Optional<User> user = iUser.findById(userFollower);
         Optional<User> userToBeRemoved = iUser.findById(userToDelete);

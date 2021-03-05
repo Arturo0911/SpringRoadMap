@@ -28,18 +28,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.saveNewUser(user)));
     }
 
-    @RequestMapping("/getFollowings")
-    ResponseEntity<JsonResponseBody> getFollowers(User user){
-        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.getFollowers(user)));
-
+    @RequestMapping("/info")
+    ResponseEntity<JsonResponseBody> getUserInfo(int userId){
+        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.sendInfoUser(userId)));
     }
 
-    @RequestMapping("/followUser/{id}")
-    ResponseEntity<JsonResponseBody> followUser(@RequestBody @Valid User user, @PathVariable("id") int id){
-        int userId = user.getUserId();
-        userService.follow(userId, id);
-        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), user));
-    }
+
 
 
 }
