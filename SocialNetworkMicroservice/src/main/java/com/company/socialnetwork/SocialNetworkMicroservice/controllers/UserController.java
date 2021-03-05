@@ -36,7 +36,9 @@ public class UserController {
 
     @RequestMapping("/followUser/{id}")
     ResponseEntity<JsonResponseBody> followUser(@RequestBody @Valid User user, @PathVariable("id") int id){
-        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.follow(user, id)));
+        int userId = user.getUserId();
+        userService.follow(userId, id);
+        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), user));
     }
 
 

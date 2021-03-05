@@ -12,6 +12,6 @@ public interface UserService {
     Optional<User> searchSpecificUser(Integer id) throws UserNotInDataBaseException;
     User saveNewUser(User user);
     List<User> getFollowers(User user);
-    User follow(User userFollower, int userToFollowId);
+    void follow(int userFollower, int userToFollow);
 
 }
