@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author Arturo Negreiros -> Payload
- * @version 1.0.0.0
+ * @version 1.2.0.0
  */
 
 @SpringBootApplication

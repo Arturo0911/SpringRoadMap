@@ -8,6 +8,7 @@ import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,5 +64,29 @@ public class UserServiceImplementation implements UserService {
 
         iUser.save(userFollowerr.get());
 
+    }
+
+    /**
+     *
+     * @param user primary key to fetch the from database
+     * @return object whicn the user info and how many users are following
+     */
+    public Object sendInfoUser(int user){
+        Optional<User> userFound = iUser.findById(user);
+        HashMap<Object, Object> userInfo = new HashMap<>();
+        userInfo.put("User", userFound);
+        userInfo.put("Following",userFound.get().getFollowers().size());
+        return userInfo;
+    }
+
+    /**
+     * This process can be refacotores using async's or Main thread proces
+     * @param userFollower
+     * @param userToDelete
+     */
+    public void unFollowUser(int userFollower, int userToDelete){
+        Optional<User> user = iUser.findById(userFollower);
+        Optional<User> userToBeRemoved = iUser.findById(userToDelete);
+        user.get().getFollowers().remove(userToBeRemoved.get());
     }
 }
