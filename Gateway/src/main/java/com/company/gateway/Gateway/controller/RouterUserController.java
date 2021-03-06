@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/product")
 public class RouterUserController {
 
     /*
@@ -19,8 +19,8 @@ public class RouterUserController {
     * to access and send of data between the client and the microservice
     * */
 
-    @GetMapping("/")
-    ResponseEntity<JsonResponseBody> searchAllUsers(){
-        
+    @GetMapping("/product/version")
+    public String getVersion(){
+        return "Version - v1";
     }
 }
