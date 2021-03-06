@@ -3,6 +3,7 @@ package com.company.socialnetwork.SocialNetworkMicroservice.controllers;
 
 import com.company.socialnetwork.SocialNetworkMicroservice.entities.User;
 import com.company.socialnetwork.SocialNetworkMicroservice.services.UserService;
+import com.company.socialnetwork.SocialNetworkMicroservice.services.errorhandlers.UserNotInDataBaseException;
 import com.company.socialnetwork.SocialNetworkMicroservice.utilities.JsonResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,16 @@ public class UserController {
     @RequestMapping("/info")
     ResponseEntity<JsonResponseBody> getUserInfo(int userId){
         return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.sendInfoUser(userId)));
+    }
+
+    @RequestMapping("/user/{userId}")
+    ResponseEntity<JsonResponseBody> searchSpecificUser(@PathVariable int userId){
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.searchSpecificUser(userId)));
+        }catch (UserNotInDataBaseException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new JsonResponseBody(HttpStatus.BAD_REQUEST.value(), e.toString()));
+        }
     }
 
 
