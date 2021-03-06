@@ -9,11 +9,18 @@ import java.util.Optional;
 public interface UserService {
 
     List<User> searchAllUsers();
+
     Optional<User> searchSpecificUser(Integer id) throws UserNotInDataBaseException;
+
     User saveNewUser(User user);
-    List<User> getFollowers(User user);
+
     void follow(int userFollower, int userToFollow);
+
     Object sendInfoUser(int user);
+
     void unFollowUser(int userFollower, int userToDelete);
+
+    // Get followers
+    List<User> getAllFollowers(Integer id);
 
 }

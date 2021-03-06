@@ -4,7 +4,6 @@ package com.company.socialnetwork.SocialNetworkMicroservice.services;
 import com.company.socialnetwork.SocialNetworkMicroservice.daos.IUser;
 import com.company.socialnetwork.SocialNetworkMicroservice.entities.User;
 import com.company.socialnetwork.SocialNetworkMicroservice.services.errorhandlers.UserNotInDataBaseException;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
-@Log
 @Service
 public class UserServiceImplementation implements UserService {
 
@@ -40,7 +38,6 @@ public class UserServiceImplementation implements UserService {
     }
 
     /**
-     *
      * @param user object to be inserted into database
      * @return the new user saved
      */
@@ -49,32 +46,24 @@ public class UserServiceImplementation implements UserService {
         return iUser.save(user);
     }
 
-    @Override
-    public List<User> getFollowers(User user) {
-        return user.getFollowers();
-    }
-
     /**
      *
-     * @param userFollower the sesion active from te user
+     * @param userToFollower the session active from te user
      * @param userToFollow the user who gonna follow
-     * @return the user followed
      */
     @Override
-    public void follow(int userFollower, int userToFollow) {
+    public void follow(int userToFollower, int userToFollow) {
 
         Optional<User> findUserToFollow = iUser.findById(userToFollow);
-        Optional<User> userFollowerr = iUser.findById(userFollower);
-        userFollowerr.get().getFollowers().add(findUserToFollow.get());
-
-        iUser.save(userFollowerr.get());
+        Optional<User> userFollower = iUser.findById(userToFollower);
+        userFollower.ifPresent(user -> user.getFollowers().add(findUserToFollow.get()));
+        iUser.save(userFollower.get());
 
     }
 
     /**
-     *
      * @param user primary key to fetch the from database
-     * @return object whicn the user info and how many users are following
+     * @return object which the user info and how many users are following
      */
     @Override
     public Object sendInfoUser(int user){
@@ -86,14 +75,27 @@ public class UserServiceImplementation implements UserService {
     }
 
     /**
-     * This process can be refacotores using async's or Main thread proces
-     * @param userFollower
-     * @param userToDelete
+     * This process can be refactors using sync's or Main thread process
+     * @param userFollower id from the user session
+     * @param userToDelete user to follow
      */
     @Override
     public void unFollowUser(int userFollower, int userToDelete){
         Optional<User> user = iUser.findById(userFollower);
         Optional<User> userToBeRemoved = iUser.findById(userToDelete);
         user.get().getFollowers().remove(userToBeRemoved.get());
+    }
+
+    /**
+     *
+     * @param id from the user follower
+     * @return all the followers
+     */
+    @Override
+    public List<User> getAllFollowers(Integer id) {
+
+        Optional<User> user = iUser.findById(id);
+        return user.map(User::getFollowers).orElse(null);
+
     }
 }
