@@ -24,8 +24,28 @@ public class UserController {
     ResponseEntity<JsonResponseBody>getUsers(){
         return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.searchAllUsers()));
     }
+
+    /**
+     * @param user use a User object to save into Database
+     * @return return ResponseEntity manage
+     */
     @RequestMapping("/saveUsers")
     ResponseEntity<JsonResponseBody> addUsers(@RequestBody @Valid User user){
+
+        /*
+         * User object to be inserted
+         *  names
+         *  lastNames
+         *  phoneNumber
+         *  userBirth
+         *  gender
+         *  email
+         *  password
+         *  followers
+         *
+         *
+         */
+
         return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.saveNewUser(user)));
     }
 
@@ -43,8 +63,6 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new JsonResponseBody(HttpStatus.BAD_REQUEST.value(), e.toString()));
         }
     }
-
-
 
 
 }
