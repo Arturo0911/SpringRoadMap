@@ -38,8 +38,9 @@ public class UserServiceImplementation implements UserService {
     }
 
     /**
-     * @param user object to be inserted into database
-     * @return the new user saved
+     * TODO:
+     * @param user new user to be inserted
+     * @return User object whenever is saved
      */
     @Override
     public User saveNewUser(User user) {
