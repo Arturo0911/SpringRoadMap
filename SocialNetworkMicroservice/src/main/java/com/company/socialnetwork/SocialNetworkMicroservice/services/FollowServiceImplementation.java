@@ -14,18 +14,23 @@ public class FollowServiceImplementation implements FollowService {
     @Autowired
     IUser iUser;
 
+    /**
+     *
+     * @param userToFollower the user whom gonna follow
+     * @param userToFollow the following
+     */
     @Override
-    public void follow(int uerFollower, int userToFollow) {
-
+    public void follow(int userToFollower, int userToFollow) {
+        Optional<User> findUserToFollow = iUser.findById(userToFollow);
+        Optional<User> userFollower = iUser.findById(userToFollower);
+        userFollower.ifPresent(user -> user.getFollowing().add(findUserToFollow.get()));
+        iUser.save(userFollower.get());
     }
 
     /**
-     *  TODO:
-     *      -- get the properties to follow and un follow the user
-     *
      * This process can be refactors using sync's or Main thread process
      * @param userFollower id from the user session
-     * @param userToUnFollow user to follow
+     * @param userToUnFollow user to unfollow
      */
     @Override
     public void unFollow(int userFollower, int userToUnFollow) {
@@ -34,10 +39,13 @@ public class FollowServiceImplementation implements FollowService {
         user.get().getFollowing().remove(userToBeRemoved.get());
     }
 
+    /**
+     *
+     * @param userId identification to fetch the user object
+     * @return return the list of the 'followings'
+     */
     @Override
     public List<User> getAllFollowings(int userId) {
-
-
         try {
             Optional<User> user = iUser.findById(userId);
             return user.get().getFollowing();

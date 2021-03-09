@@ -49,12 +49,20 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public void deleteUser(int userId) {
-
+        Optional<User> user = iUser.findById(userId);
+        user.get().setStatus("Inactive");
+        iUser.save(user.get());
     }
 
     @Override
-    public String updateUser(User user) {
-        return null;
+    public User updateUser(User user) {
+
+        try {
+            return iUser.save(user);
+        }catch (Exception e ){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**

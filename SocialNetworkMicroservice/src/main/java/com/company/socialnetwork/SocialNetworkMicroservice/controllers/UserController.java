@@ -31,28 +31,20 @@ public class UserController {
      */
     @RequestMapping("/saveUsers")
     ResponseEntity<JsonResponseBody> addUsers(@RequestBody @Valid User user){
-
-        /*
-         * User object to be inserted
-         *  names
-         *  lastNames
-         *  phoneNumber
-         *  userBirth
-         *  gender
-         *  email
-         *  password
-         *  followers
-         *
-         *
-         */
-
+        user.setStatus("Active");
         return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.saveNewUser(user)));
     }
 
-    /*@RequestMapping("/info")
-    ResponseEntity<JsonResponseBody> getUserInfo(int userId){
-        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.sendInfoUser(userId)));
-    }*/
+    @RequestMapping("/delete/{userId}")
+    ResponseEntity<JsonResponseBody> deleteUser(@PathVariable("userId") int userId){
+        try {
+            userService.deleteUser(userId);
+            return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(),"" ));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new JsonResponseBody(HttpStatus.BAD_REQUEST.value(), e.toString()));
+        }
+
+    }
 
     @RequestMapping("/user/{userId}")
     ResponseEntity<JsonResponseBody> searchSpecificUser(@PathVariable int userId){
@@ -60,6 +52,17 @@ public class UserController {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.searchSpecificUser(userId)));
         }catch (UserNotInDataBaseException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new JsonResponseBody(HttpStatus.BAD_REQUEST.value(), e.toString()));
+        }
+    }
+
+    @RequestMapping("/updateUser")
+    ResponseEntity<JsonResponseBody> updateUser(@RequestBody @Valid User user){
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.updateUser(user)));
+        }catch (Exception e ){
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new JsonResponseBody(HttpStatus.BAD_REQUEST.value(), e.toString()));
         }
     }

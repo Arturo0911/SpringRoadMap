@@ -52,6 +52,11 @@ public class User {
     @NotNull @NotBlank @NotBlank
     private String gender;
 
+    @Column(name = "user_status", length = 10)
+    @Getter @Setter
+    @NotNull @NotBlank
+    private String status;
+
     @Column(name = "user_email", length = 25)
     @Getter @Setter
     @NotNull @NotBlank @NotBlank
