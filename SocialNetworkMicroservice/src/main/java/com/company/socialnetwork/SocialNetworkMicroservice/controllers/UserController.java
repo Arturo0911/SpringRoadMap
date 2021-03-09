@@ -49,10 +49,10 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.saveNewUser(user)));
     }
 
-    @RequestMapping("/info")
+    /*@RequestMapping("/info")
     ResponseEntity<JsonResponseBody> getUserInfo(int userId){
         return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.sendInfoUser(userId)));
-    }
+    }*/
 
     @RequestMapping("/user/{userId}")
     ResponseEntity<JsonResponseBody> searchSpecificUser(@PathVariable int userId){

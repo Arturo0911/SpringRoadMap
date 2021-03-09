@@ -47,17 +47,26 @@ public class UserServiceImplementation implements UserService {
         return iUser.save(user);
     }
 
+    @Override
+    public void deleteUser(int userId) {
+
+    }
+
+    @Override
+    public String updateUser(User user) {
+        return null;
+    }
+
     /**
      *
      * @param userToFollower the session active from te user
      * @param userToFollow the user who gonna follow
      */
-    @Override
     public void follow(int userToFollower, int userToFollow) {
 
         Optional<User> findUserToFollow = iUser.findById(userToFollow);
         Optional<User> userFollower = iUser.findById(userToFollower);
-        userFollower.ifPresent(user -> user.getFollowers().add(findUserToFollow.get()));
+        userFollower.ifPresent(user -> user.getFollowing().add(findUserToFollow.get()));
         iUser.save(userFollower.get());
 
     }
@@ -66,25 +75,12 @@ public class UserServiceImplementation implements UserService {
      * @param user primary key to fetch the from database
      * @return object which the user info and how many users are following
      */
-    @Override
     public Object sendInfoUser(int user){
         Optional<User> userFound = iUser.findById(user);
         HashMap<Object, Object> userInfo = new HashMap<>();
         userInfo.put("User", userFound);
-        userInfo.put("Following",userFound.get().getFollowers().size());
+        userInfo.put("Following",userFound.get().getFollowing().size());
         return userInfo;
-    }
-
-    /**
-     * This process can be refactors using sync's or Main thread process
-     * @param userFollower id from the user session
-     * @param userToDelete user to follow
-     */
-    @Override
-    public void unFollowUser(int userFollower, int userToDelete){
-        Optional<User> user = iUser.findById(userFollower);
-        Optional<User> userToBeRemoved = iUser.findById(userToDelete);
-        user.get().getFollowers().remove(userToBeRemoved.get());
     }
 
     /**
@@ -92,11 +88,10 @@ public class UserServiceImplementation implements UserService {
      * @param id from the user follower
      * @return all the followers
      */
-    @Override
     public List<User> getAllFollowers(Integer id) {
 
         Optional<User> user = iUser.findById(id);
-        return user.map(User::getFollowers).orElse(null);
+        return user.map(User::getFollowing).orElse(null);
 
     }
 }

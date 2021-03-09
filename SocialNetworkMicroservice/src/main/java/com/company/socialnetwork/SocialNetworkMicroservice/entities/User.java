@@ -66,7 +66,7 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_relations", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "following_id"))
     @Getter @Setter
-    private List<User> followers;
+    private List<User> following;
 
 
     /*
