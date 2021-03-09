@@ -22,7 +22,7 @@ public class FollowersPropertiesControllers {
 
     @RequestMapping("/getFollowings/{userId}")
     ResponseEntity<JsonResponseBody> getFollowers(@PathVariable("userId") int userId){
-        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userService.getAllFollowers(userId)));
+        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), followService.getAllFollowings(userId)));
 
     }
 

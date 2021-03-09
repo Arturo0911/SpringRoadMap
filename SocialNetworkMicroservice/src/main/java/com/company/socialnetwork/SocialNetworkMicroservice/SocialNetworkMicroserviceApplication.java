@@ -10,6 +10,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SocialNetworkMicroserviceApplication {
+	/**
+	 * 	TODO:
+	 * 		-- Microservice to emulate the Twitter process
+	 * 			-- Create the user, delete, update and read, the classic crud
+	 * 			-- Add the property to add another user.
+	 */
 
 	public static void main(String[] args) {
 		SpringApplication.run(SocialNetworkMicroserviceApplication.class, args);

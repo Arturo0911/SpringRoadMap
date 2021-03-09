@@ -89,7 +89,6 @@ public class UserServiceImplementation implements UserService {
      * @return all the followers
      */
     public List<User> getAllFollowers(Integer id) {
-
         Optional<User> user = iUser.findById(id);
         return user.map(User::getFollowing).orElse(null);
 
