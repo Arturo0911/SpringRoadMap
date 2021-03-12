@@ -1,4 +1,4 @@
-package com.company.socialnetwork.SocialNetworkMicroservice.services;
+package com.company.socialnetwork.SocialNetworkMicroservice.services.interfaces;
 
 import com.company.socialnetwork.SocialNetworkMicroservice.entities.User;
 

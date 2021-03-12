@@ -2,6 +2,7 @@ package com.company.socialnetwork.SocialNetworkMicroservice.services;
 
 import com.company.socialnetwork.SocialNetworkMicroservice.daos.IUser;
 import com.company.socialnetwork.SocialNetworkMicroservice.entities.User;
+import com.company.socialnetwork.SocialNetworkMicroservice.services.interfaces.FollowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

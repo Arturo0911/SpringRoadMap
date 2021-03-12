@@ -2,8 +2,7 @@ package com.company.socialnetwork.SocialNetworkMicroservice.controllers;
 
 
 import com.company.socialnetwork.SocialNetworkMicroservice.entities.User;
-import com.company.socialnetwork.SocialNetworkMicroservice.services.FollowService;
-import com.company.socialnetwork.SocialNetworkMicroservice.services.UserService;
+import com.company.socialnetwork.SocialNetworkMicroservice.services.interfaces.FollowService;
 import com.company.socialnetwork.SocialNetworkMicroservice.utilities.JsonResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -2,7 +2,7 @@ package com.company.socialnetwork.SocialNetworkMicroservice.controllers;
 
 
 import com.company.socialnetwork.SocialNetworkMicroservice.entities.User;
-import com.company.socialnetwork.SocialNetworkMicroservice.services.UserService;
+import com.company.socialnetwork.SocialNetworkMicroservice.services.interfaces.UserService;
 import com.company.socialnetwork.SocialNetworkMicroservice.services.errorhandlers.UserNotInDataBaseException;
 import com.company.socialnetwork.SocialNetworkMicroservice.utilities.JsonResponseBody;
 import org.springframework.beans.factory.annotation.Autowired;
