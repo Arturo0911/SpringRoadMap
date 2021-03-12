@@ -30,7 +30,7 @@ public class Post {
     @Getter @Setter
     private Date postDate;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
