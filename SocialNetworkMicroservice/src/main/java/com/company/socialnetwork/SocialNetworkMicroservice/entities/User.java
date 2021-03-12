@@ -73,22 +73,9 @@ public class User {
     @Getter @Setter
     private List<User> following;
 
-
-    /*
-    * How many users yo follow
-    *
-    * */
-
-    /*@ManyToMany
-    @JoinTable(name = "users_follow",
-            joinColumns = @JoinColumn(name = "user_id_follower"), inverseJoinColumns = @JoinColumn(name = "user_id_followed"))
+    @OneToMany(mappedBy = "user")
     @Getter @Setter
-    private Set<User> users = new HashSet<>();
-
-    @OneToMany(mappedBy = "userFollower")
-    @Getter @Setter
-    private Set<Following> followings = new HashSet<>();*/
-
+    private List<Post>posts;
 
 
 }
