@@ -57,7 +57,7 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public User updateUser(User user) {
-
+        // in the postman section send the id for updating
         try {
             return iUser.save(user);
         }catch (Exception e ){
