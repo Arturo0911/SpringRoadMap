@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
  * @author Arturo Negreiros
  */
 
-@AllArgsConstructor @NoArgsConstructor
+@Service
 public class UserStructure {
 
     /**
@@ -28,18 +30,25 @@ public class UserStructure {
      *          -- userBirth
      *          -- userPhoneNumber
      */
-    @Getter @Setter
-    public static final HashMap<Object, Object> userManagement = new HashMap<>();
 
     public HashMap formatUser(User user){
 
-
-
-        return null;
+        HashMap<Object, Object> userManagement = new HashMap<>();
+        userManagement.put("userId", user.getUserId());
+        userManagement.put("userName", user.getNames());
+        userManagement.put("userLastName", user.getLastNames());
+        userManagement.put("userBirth", user.getUserBirth());
+        userManagement.put("userPhoneNumber", user.getPhoneNumber());
+        return userManagement;
     }
 
     public List formatUsers(List<User> users){
-        return null;
+
+        List<HashMap<Object, Object>> allUsersManagement = new ArrayList<>();
+        for(User user: users){
+            allUsersManagement.add(formatUser(user));
+        }
+        return allUsersManagement;
     }
 
 
