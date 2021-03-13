@@ -4,6 +4,7 @@ package com.company.socialnetwork.SocialNetworkMicroservice.controllers;
 import com.company.socialnetwork.SocialNetworkMicroservice.entities.User;
 import com.company.socialnetwork.SocialNetworkMicroservice.services.interfaces.FollowService;
 import com.company.socialnetwork.SocialNetworkMicroservice.utilities.JsonResponseBody;
+import com.company.socialnetwork.SocialNetworkMicroservice.utilities.messagesresponse.MessageStatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,8 @@ public class FollowersPropertiesControllers {
 
     @RequestMapping("/getFollowings/{userId}")
     ResponseEntity<JsonResponseBody> getFollowers(@PathVariable("userId") int userId){
-        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), followService.getAllFollowings(userId)));
+        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(),
+                MessageStatusCode.successStatus, followService.getAllFollowings(userId)));
 
     }
 
@@ -29,13 +31,15 @@ public class FollowersPropertiesControllers {
     ResponseEntity<JsonResponseBody> followUser(@RequestBody @Valid User user, @PathVariable("id") int id){
         int userId = user.getUserId();
         followService.follow(userId, id);
-        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), user));
+        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(),
+                MessageStatusCode.successStatus, user));
     }
 
     @RequestMapping("/info/{id}")
     ResponseEntity<JsonResponseBody> unFollowsUser(@RequestBody @Valid User user, @PathVariable("id") int id){
         int userId = user.getUserId();
         followService.unFollow(user.getUserId(), id);
-        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), userId ));
+        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(),
+                MessageStatusCode.successStatus, userId ));
     }
 }
