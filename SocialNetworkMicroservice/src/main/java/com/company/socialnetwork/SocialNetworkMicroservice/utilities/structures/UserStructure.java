@@ -29,9 +29,12 @@ public class UserStructure {
      *          -- userPhoneNumber
      */
     @Getter @Setter
-    public HashMap<Object, Object> userManagement;
+    public static final HashMap<Object, Object> userManagement = new HashMap<>();
 
     public HashMap formatUser(User user){
+
+
+
         return null;
     }
 
