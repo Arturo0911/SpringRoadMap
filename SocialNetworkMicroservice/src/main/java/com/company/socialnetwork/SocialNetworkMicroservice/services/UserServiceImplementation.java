@@ -25,8 +25,8 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public List<User> searchAllUsers() {
-        return userStructure.formatUsers(iUser.findAll());
-    }
+        return userStructure.formatUsers(userStructure.formatUsers(iUser.findAll()));
+    }22
 
     @Override
     public Optional<User> searchSpecificUser(Integer id) throws UserNotInDataBaseException {
