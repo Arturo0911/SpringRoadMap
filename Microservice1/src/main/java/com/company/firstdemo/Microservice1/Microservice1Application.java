@@ -31,23 +31,5 @@ public class Microservice1Application implements CommandLineRunner {
 	}
 
 
-	@Override
-	public void run(String... args) throws Exception {
-		//
-		log.info("hello");
-		String encryptedPassword;
-		encryptedPassword = encryptionUtils.encrypt("LikeAStone");
-		userDao.save(new User("anegreiros@outlook.com", "Arturo Negreiros", encryptedPassword));
-		encryptedPassword = encryptionUtils.encrypt("MyUbuntu");
-		userDao.save(new User("negreirosarturo@gmail.com", "Francesco Samanez", encryptedPassword));
-		encryptedPassword = encryptionUtils.encrypt("ParrotOs");
-		userDao.save(new User("payload_1609@protonmail.com", "Arturon Negreiros", encryptedPassword));
-		toDoDao.save(new ToDo(1,"Learning Spring", new Date(), "HIGH", "anegreiross@outlook.com"));
-		toDoDao.save(new ToDo(2,"Learning Java", new Date(), "LOW", "negreirosarturo@gmail.com"));
-		toDoDao.save(new ToDo(3,"Learning Spring with Java", new Date(), "HIGH", "negreirosarturo@gmail.com"));
-		//toDoDao.save(new ToDo(3, "Using this Os to security", new Date(), "HIGH", "payload_1609@protonmail.com"));
-		log.info("Data was saved into database");
-		log.info("new message");
-	}
-
+	
 }
